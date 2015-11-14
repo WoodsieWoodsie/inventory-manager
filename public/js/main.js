@@ -7,6 +7,25 @@ function init() {
   printExisting();
   $('.roomNames').on('click', 'button', itemsView);
   $('.create-room').click(createRoom);
+  $('.create-item').click(createItem);
+}
+
+function createItem() {
+  var itemName = $('.nameItem').val();
+  var itemValue = '$' + $('.valueItem').val();
+  var itemDescription = $('.describeItem').val();
+  $.post('/items', {name: itemName, value: itemValue, description: itemDescription})
+  .done(function(data) {
+    console.log("create item data: ", data);
+
+    $('.nameItem').empty();
+    $('.valueItem').empty();
+    $('.describeItem').empty();
+
+  })
+  .fail(function(err) {
+    console.error(err);
+  });
 }
 
 function createRoom() {
@@ -15,8 +34,13 @@ function createRoom() {
   $.post('/rooms', {name: roomInput})
   .done(function(data) {
     console.log("create room data: ", data);
-
-    $('.nameRoom').empty();
+    var $roomNamesDiv = $('.roomNames');
+    var id = data._id;
+    var $roomName = $('<p>');
+    $roomName.append($('<button>').addClass('btn btn-default').data('mongoid', id).text(data.name));
+    $roomNamesDiv.append($roomName);
+    $('.rooms-panel').append($roomNamesDiv);
+    $('.nameRoom').val('');
   })
   .fail(function(err) {
     console.error(err);

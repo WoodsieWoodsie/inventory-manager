@@ -32,15 +32,12 @@ html(lang="en")
           h3 Items in Room:
           .panel-body.items-panel
             .itemsInRoom
-
-        //- #accordion.panel-group(role='tablist', aria-multiselectable='true' display= 'none')
-        //-   .row  
-        //-     .panel.panel-default
-        //-       #heading.panel-heading(role='tab')
-        //-         h4.panel-title
-        //-           a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne' class='roomName')
-        //-        #collapseOne.panel-collapse.collapse.in(role='tabpanel', aria-labelledby='headingOne')
-        //-          .panel-body
+      
+      .row
+        .panel.panel-default.col-sm-4
+          h3 Items:
+          .panel-body.items-floating
+            .items
               
 
     script(src='bower_components/jquery/dist/jquery.min.js')
