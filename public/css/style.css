@@ -11,6 +11,6 @@ input {
   margin: 15px;
 }
 
-/*button {
-  border-radius: 4px;
-}*/
+button {
+  margin: 15px;
+}

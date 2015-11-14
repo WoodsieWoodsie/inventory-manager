@@ -12,15 +12,22 @@ function init() {
 
 function createItem() {
   var itemName = $('.nameItem').val();
-  var itemValue = '$' + $('.valueItem').val();
+  var itemValue = $('.valueItem').val();
   var itemDescription = $('.describeItem').val();
   $.post('/items', {name: itemName, value: itemValue, description: itemDescription})
   .done(function(data) {
     console.log("create item data: ", data);
 
-    $('.nameItem').empty();
-    $('.valueItem').empty();
-    $('.describeItem').empty();
+    var $itemsDiv = $('.items');
+    var id = data._id;
+    var $itemData = $('<button>').data('mongoid', id).addClass('btn btn-default').append($('<p>').text(`Item: ${data.name} Value: $ ${data.value} Description: ${data.description}`));
+    $itemsDiv.append($itemData);
+
+    $('.items-floating').append($itemsDiv);
+
+    $('.nameItem').val('');
+    $('.valueItem').val('');
+    $('.describeItem').val('');
 
   })
   .fail(function(err) {
@@ -58,6 +65,21 @@ function printExisting() {
       $roomNamesDiv.append($roomName);
     });
     $('.rooms-panel').append($roomNamesDiv);
+  })
+  .fail(function(err){
+    console.error(err)
+  });
+
+  $.get('/items')
+  .done(function(data){
+    var $itemsDiv = $('.items');
+    console.log('existing items data: ', data);
+    data.map(function(element) {
+      var id = element._id;
+      var $itemData = $('<button>').data('mongoid', id).addClass('btn btn-default').append($('<p>').text(`Item: ${element.name}... Value: $ ${element.value}... Description: ${element.description}`));
+      $itemsDiv.append($itemData);
+    });
+    $('.items-floating').append($itemsDiv);
   })
   .fail(function(err){
     console.error(err)

@@ -6,7 +6,7 @@ var Item;
 
 var itemSchema = mongoose.Schema({
   name: {type: String, required: true},
-  value: {type: Number, required: true},
+  value: {type: Number},
   description: String,
   createdAt: {type: Date, default: new Date()}
 });
