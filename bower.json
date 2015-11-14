@@ -2,11 +2,7 @@
   "name": "expresstest",
   "description": "",
   "main": "app.js",
-  "authors": [
-    "Cade Nichols <cade@cadenichols.com>"
-  ],
   "license": "ISC",
-  "homepage": "https://github.com/cadenichols/express-sample",
   "moduleType": [],
   "ignore": [
     "**/.*",
