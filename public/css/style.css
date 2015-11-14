@@ -1,6 +1,6 @@
 
 .panel {
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 label {
@@ -12,5 +12,13 @@ input {
 }
 
 button {
+  margin: 15px;
+}
+
+/*.choice-panel {
+  display: none;
+}*/
+
+a {
   margin: 15px;
 }

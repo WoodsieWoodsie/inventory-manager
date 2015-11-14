@@ -22,9 +22,11 @@ router.put('/:roomId/addItem/:itemId', function(req, res){
       if (room.items.indexOf(item._id) !== -1) {
         res.status(400).send('item already in room');
       } else {
+        // item.hasParent = true;
+        // console.log('item.hasParent?', item.hasParent);
         room.items.push(item._id);
-        room.save(function(err){
-          res.status(err ? 400 : 200).send(err ? 'item add failed' : 'item added');
+        room.save(function(err, data){
+          res.status(err ? 400 : 200).send(err ? 'item add failed' : data);
         });
       }
     });
@@ -50,7 +52,7 @@ router.get(`/:id`, function(req, res) {
 
 // UPDATE A ROOM
 router.put(`/:id`, function(req, res) {
-  Room.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err, room) {
+  Room.findByIdAndUpdate(req.params.id, req.body, function(err, room) {
     res.status(err ? 400 : 200).send(err ? err : `${req.body.name} saved`);
   });
 });

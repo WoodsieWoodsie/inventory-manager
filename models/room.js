@@ -6,7 +6,7 @@ let Schema = mongoose.Schema;
 var Room;
 
 var roomSchema = Schema({
-  name: {type: String, required: true},
+  name: {type: String, required: true, unique: true},
   createdAt: {type: Date, default: new Date()},
   items: [{type: Schema.Types.ObjectId, ref: 'Item'}]
 });

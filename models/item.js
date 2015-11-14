@@ -8,7 +8,8 @@ var itemSchema = mongoose.Schema({
   name: {type: String, required: true},
   value: {type: Number},
   description: String,
-  createdAt: {type: Date, default: new Date()}
+  createdAt: {type: Date, default: new Date()},
+  hasParent: {type: Boolean, default: false}
 });
 
 itemSchema.statics.addItem = function(item, cb){
