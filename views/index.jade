@@ -2,12 +2,47 @@ doctype html
 html(lang="en")
   head
     title Home
-    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css")
-    link(href="css/style.css")
+    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet")
+    link(href="css/style.css" rel="stylesheet")
   body
     .container
-      br
-      .jumbotron
-        h1 Hey!
+      .row 
+        h3 Create a Room
+        label(for="nameRoom") Room Name:
+        input(type="text" class="nameRoom")
+        button.btn.btn-success.btn-sm.create-room Create Room  
+
+      .row
+        h3 Create an Item
+        label(for="nameItem") Item Name:
+        input(type="text" class="nameItem")
+        label(for="valueItem") Item Value:
+        input(type="text" class="valueItem")
+        label(for="describeItem") Item Description:
+        input(type="text" class="describeItem")
+        button.btn.btn-success.btn-sm.create-item Create Item
+
+      .row
+        .panel.panel-default.col-sm-4
+          h3 Rooms:
+          .panel-body.rooms-panel
+            .roomNames
+
+        .panel.panel-default.col-sm-4.col-sm-offset-3
+          h3 Items in Room:
+          .panel-body.items-panel
+            .itemsInRoom
+
+        //- #accordion.panel-group(role='tablist', aria-multiselectable='true' display= 'none')
+        //-   .row  
+        //-     .panel.panel-default
+        //-       #heading.panel-heading(role='tab')
+        //-         h4.panel-title
+        //-           a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne' class='roomName')
+        //-        #collapseOne.panel-collapse.collapse.in(role='tabpanel', aria-labelledby='headingOne')
+        //-          .panel-body
+              
+
     script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
     script(src='js/main.js')

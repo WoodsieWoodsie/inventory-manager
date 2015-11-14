@@ -6,6 +6,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/itemsmanager');
+
 var app = express();
 
 app.set('view engine', 'jade');
@@ -18,6 +21,8 @@ app.use(express.static('public'));
 
 // ROUTES
 app.use('/', require('./routes/index'));
+app.use('/items', require('./routes/items'))
+app.use('/rooms', require('./routes/rooms'))
 
 // 404 HANDLER
 app.use(function(req, res){
